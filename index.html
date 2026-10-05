@@ -11,7 +11,7 @@
       <nav>
         <img src="asset/imgs/today-pen-mute.svg" alt="오늘도,펭긋 로고" />
         <ul>
-          <li><a href="#codeing">코딩</a></li>
+          <li><a href="#coding">코딩</a></li>
           <li><a href="#drawing">그림</a></li>
           <li><a href="#email">이메일</a></li>
         </ul>
@@ -24,18 +24,103 @@
         <canvas></canvas>
       </section>
 
-      <section id="codeing">
+      <section id="coding">
         <h2>
           <!-- 이 코딩이라는 타이틀은 터미널 폰트와 같은 느낌의 타이틀 실제 태그가 아님 -->
-          &#60;codeing /&#62;
+          &#60;coding /&#62;
         </h2>
 
         <p>웹 퍼블리셔, 프론트엔드를 지향해요</p>
         <a href="내 깃허브"></a>
         <div>
           <ul>
-            <li><h3>오늘도,펭긋</h3></li>
-            <li><h3>포캣멍 보호소</h3></li>
+            <li>
+              <img src="" alt="" />
+              <div>
+                <p>01 / 개인 프로젝트</p>
+                <h3>오늘도,펭긋</h3>
+                <p>캐릭터 브랜드를 담은 반응형 쇼핑몰</p>
+
+                <p>기획 디자인 퍼블리싱</p>
+
+                <button type="button">사이트보기</button>
+                <button type="button">Github</button>
+
+                <details>
+                  <summary>작업과정 보기</summary>
+                  <ul>
+                    <li>
+                      <h4>구현 과정</h4>
+                      <p>
+                        HTML, CSS, JavaScript로 메인 화면을 직접 구현하고, 카페24 쇼핑몰 환경에 맞게
+                        적용했습니다. 다양한 화면 크기에 대응하는 반응형 레이아웃을 구성하고 상품
+                        등록까지 진행했습니다.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>어려웠던 점</h4>
+                      <p>
+                        캐릭터를 여러 상품 이미지에 활용하면서 일관된 분위기를 유지하는 것이
+                        어려웠습니다. AI로 생성한 이미지가 의도한 콘셉트와 맞지 않아 반복적인 수정과
+                        검토가 필요했습니다.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>해결 방법</h4>
+                      <p>
+                        ChatGPT로 캐릭터 콘셉트와 이미지 제작 방향을 구체화하고, MixBoard에서
+                        프롬프트를 수정하며 결과물을 비교했습니다. 생성된 이미지를 직접 검토하고
+                        선별해 브랜드 분위기에 맞는 상품 이미지로 활용했습니다.
+                      </p>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li>
+              <img src="" alt="" />
+              <div>
+                <p>02 / 팀 프로젝트</p>
+
+                <h3>포캣멍보호소</h3>
+                <p>
+                  방문자가 보호 동물 정보를 확인하고 입양과 후원을 문의할 수 있도록 제작한 팀
+                  프로젝트입니다.
+                </p>
+
+                <p>프론트엔드 개발 · 공통 스타일 구성 · 반응형 UI 구현 · API 연동</p>
+
+                <button type="button">사이트보기</button>
+                <details>
+                  <summary>작업과정 보기</summary>
+                  <ul>
+                    <li>
+                      <h4>구현 과정</h4>
+                      <p>
+                        CSS 리셋과 공통 스타일 가이드를 설정하고, CSS 변수로 색상·글자 크기·여백을
+                        관리했습니다. 미디어 쿼리로 화면 크기에 따른 레이아웃을 구현하고, 백엔드
+                        API와 연동해 유기동물 정보를 화면에 표시했습니다.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>어려웠던 점</h4>
+                      <p>
+                        각 페이지에서 Header와 Footer를 개별적으로 불러와 코드가 반복됐습니다. 새
+                        페이지를 추가할 때마다 공통 영역을 다시 구성해야 해서 관리가 번거로웠습니
+                      </p>
+                    </li>
+                    <li>
+                      <h4>해결 방법</h4>
+                      <p>
+                        React Router의 Outlet을 활용해 공통 레이아웃을 분리했습니다. Header와
+                        Footer는 한곳에서 관리하고 페이지별 콘텐츠만 바뀌도록 구성해 중복 코드를
+                        줄이고 페이지를 추가하기 쉽게 개선했습니다.
+                      </p>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+            </li>
           </ul>
         </div>
       </section>
@@ -45,6 +130,9 @@
         <a href="인스타 그램"></a>
         <a href="미리캔버스 기여자페이지"></a>
         <a href="어도비 스톡"></a>
+        <div>
+          <ul></ul>
+        </div>
       </section>
 
       <section id="email">
