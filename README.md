@@ -1,8 +1,11 @@
 ## 안녕하세요 프론트엔드 신입 개발자 김희준 입니다 👋
+
 ### 고객의 요구를 이해하는 전직 애견미용사, 이제는 UI/UX에 진심인 프론트엔드 개발자입니다!
+
 <br/>
 
 #### 기술스택
+
 <div>  
 <span><img src="https://img.shields.io/badge/html5-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white" /></span>
 </div>
@@ -36,5 +39,3 @@
 <br/>
 
 [![GitGarden](https://gitgarden.marshallku.dev/?user_name=PenguinKKIM)](https://github.com/marshallku/gitgarden)
-
-
