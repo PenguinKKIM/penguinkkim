@@ -1,2 +1,176 @@
 @import url(reset.css);
 @import url(vars.css);
+
+/* 1. 공통: vars.css의 값을 var(...)로 가져와 사용하세요. */
+body {
+  background-color: var(--color-background);
+  font-size: var(--font-size-base);
+  font-style: var(--font-family-base);
+  color: var(--color-text);
+}
+
+.inner {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.inner .section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.inner .section-desc {
+  /* 구역 소개 문구 */
+}
+
+/* 2. 상단: 로고와 메뉴 배치 */
+.header {
+  background-color: var(--color-primary);
+}
+
+.header > .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.logo {
+  width: 100px;
+}
+.gnb {
+}
+.gnb .list {
+  display: flex;
+  gap: 16px;
+}
+.gnb .list > li {
+  color: var(--color-primary-hover);
+}
+.gnb .list > li > a:hover {
+  color: var(--color-primary-light);
+}
+
+/* 3. 첫 인사: 소개 문구와 펭귄 영역 */
+.section-intro {
+  min-height: 38rem;
+  padding-block: var(--space-16);
+}
+
+.intro-title {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.intro-canvas {
+  width: min(100%, 34rem);
+  height: 28rem;
+  margin-inline: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.intro-canvas:active {
+  cursor: grabbing;
+}
+
+/* 4. 프로젝트 */
+.coding .img-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  background-color: var(--color-primary);
+  padding: var(--space-10);
+}
+
+.coding .section-title {
+  font-size: var(--font-size-3xl);
+  background-image: var(--gradient-title);
+  background-clip: text;
+  color: transparent;
+}
+
+.coding .section-desc {
+  color: var(--color-primary-light);
+}
+
+.coding .section-info {
+  margin-top: var(--space-4);
+  color: var(--color-primary-hover);
+  text-shadow: #f7f6f173 1px 0 40px;
+}
+
+.coding .img-wrap .img {
+  width: 400px;
+}
+
+.project-wrap {
+}
+.project-list {
+}
+
+.project-item {
+  /* 이미지와 설명의 배치, 프로젝트 사이 간격 */
+}
+
+.project-img {
+}
+.project-info {
+}
+.project-category {
+}
+.project-title {
+}
+.project-desc {
+}
+.project-role {
+}
+
+/* 5. 기술 배지: 목록 안의 목록이므로 클래스로 구분합니다. */
+.skill-list {
+}
+.skill-list > li {
+}
+
+/* 6. 버튼 모양과 배치: 추후 a 태그에도 같은 클래스를 사용합니다. */
+.btn-wrap {
+}
+.btn {
+}
+.btn:hover {
+}
+
+/* 7. 작업 과정: summary의 기본 펼치기 표시를 활용하세요. */
+.project-detail {
+}
+.detail-title {
+}
+.project-detail[open] {
+}
+.detail-list {
+}
+.detail-list > li {
+}
+.detail-list h4 {
+}
+.detail-list p {
+}
+
+/* 8. 그림 / 연락처 / 하단 */
+.section-drawing {
+}
+.drawing-wrap {
+}
+.drawing-list {
+}
+.section-contact {
+}
+.footer {
+}
+
+/* 9. 반응형
+   기본 스타일을 작성한 뒤, 내용이 좁아지는 지점을 기준으로
+   미디어 쿼리를 추가하세요. 넓은 화면에서는 프로젝트 이미지와
+   설명을 두 열로 배치할 수 있습니다.
+*/

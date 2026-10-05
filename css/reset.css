@@ -62,10 +62,16 @@ textarea {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 a:hover {
   cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 ul[role="list"],

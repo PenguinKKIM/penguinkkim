@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("../asset/font/PretendardVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* 브랜드 색상 */
-  --color-primary: #6495ed;
-  --color-primary-hover: #2e557c;
+  --color-primary: #002262;
+  --color-primary-hover: #7ba5f4;
   --color-primary-light: #eaf1f8;
   --color-secondary: #efd19a;
   --color-accent: #b85e45;
@@ -27,7 +35,7 @@
   --color-focus: var(--color-primary);
 
   /* 그라데이션 */
-  --gradient-title: linear-gradient(90deg, #3e7eec, #1c5fd6, #651dd1, #ff3292);
+  --gradient-title: linear-gradient(90deg, #5679b6, #1c5fd6, #d575f2, #a11858);
 
   /* 글꼴 */
   --font-family-base:
@@ -74,7 +82,7 @@
   --space-24: 6rem;
 
   /* 레이아웃 */
-  --container-max-width: 75rem;
+  --container-max-width: 80rem;
   --container-padding: clamp(1.25rem, 4vw, 2.5rem);
   --section-spacing: clamp(3.5rem, 8vw, 7rem);
   --header-height: 5rem;

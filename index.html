@@ -4,51 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+        }
+      }
+    </script>
     <title>PenguinKKim</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <img src="asset/imgs/today-pen-mute.svg" alt="오늘도,펭긋 로고" />
-        <ul>
-          <li><a href="#coding">코딩</a></li>
-          <li><a href="#drawing">그림</a></li>
-          <li><a href="#email">이메일</a></li>
-        </ul>
-      </nav>
+    <header class="header">
+      <div class="inner">
+        <img class="logo" src="asset/imgs/today-pen-mute.svg" alt="오늘도,펭긋 로고" />
+        <nav class="gnb">
+          <ul class="list">
+            <li><a href="#coding">코딩</a></li>
+            <li><a href="#drawing">그림</a></li>
+            <li><a href="#email">이메일</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-      <h1>안녕하세요! 저는 김펭긴 입니다!</h1>
-      <section>
+      <section class="section-intro inner">
+        <h1 class="intro-title">안녕하세요! 저는 김펭긴 입니다!</h1>
         <!-- 3D가 들어갈 자리 : 펭귄이 막 돌아감 -->
-        <canvas></canvas>
+        <canvas
+          class="intro-canvas"
+          aria-label="마우스나 손가락으로 돌려볼 수 있는 3D 펭귄"
+          tabindex="0"
+        >
+          3D 펭귄을 불러오지 못했습니다.
+        </canvas>
       </section>
 
-      <section id="coding">
-        <h2>
-          <!-- 이 코딩이라는 타이틀은 터미널 폰트와 같은 느낌의 타이틀 실제 태그가 아님 -->
-          &#60;coding /&#62;
-        </h2>
+      <section id="coding" class="coding section-project inner">
+        <div class="img-wrap">
+          <img src="asset/imgs/coding.png" alt="코딩하는 펭긴" class="img" />
+          <div>
+            <h2 class="section-title">&#60;coding /&#62;</h2>
+            <p class="section-desc">웹 퍼블리셔, 프론트엔드를 지향해요</p>
+            <p class="section-info">
+              10년간 반려동물 미용사로 일하며 상대의 요구를 듣고 세심하게 반영하는 태도를
+              배웠어요.<br />
+              지금은 HTML, CSS, JavaScript와 React로 화면을 만들며, <br />보호소 홈페이지 제작과
+              인턴십을 통해 반응형 웹과 협업을 경험했어요. <br />디자인의 의도를 살리고, 누구나
+              편리하게 사용할 수 있는 화면을 만들고 싶어요.
+            </p>
+            <a href="내 깃허브"></a>
+          </div>
+        </div>
 
-        <p>웹 퍼블리셔, 프론트엔드를 지향해요</p>
-        <a href="내 깃허브"></a>
-        <div>
-          <ul>
-            <li>
-              <img src="" alt="" />
-              <div>
-                <p>01 / 개인 프로젝트</p>
-                <h3>오늘도,펭긋</h3>
-                <p>캐릭터 브랜드를 담은 반응형 쇼핑몰</p>
+        <div class="project-wrap">
+          <ul class="project-list">
+            <li class="project-item">
+              <img class="project-img" src="" alt="" />
+              <div class="project-info">
+                <p class="project-category">01 / 개인 프로젝트</p>
+                <h3 class="project-title">오늘도,펭긋</h3>
+                <p class="project-desc">캐릭터 브랜드를 담은 반응형 쇼핑몰</p>
 
-                <p>기획 디자인 퍼블리싱</p>
+                <p class="project-role">기획 디자인 퍼블리싱</p>
+                <ul class="skill-list" aria-label="사용 기술">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Cafe24</li>
+                </ul>
 
-                <button type="button">사이트보기</button>
-                <button type="button">Github</button>
+                <div class="btn-wrap">
+                  <button class="btn" type="button">사이트보기</button>
+                  <button class="btn" type="button">Github</button>
+                </div>
 
-                <details>
-                  <summary>작업과정 보기</summary>
-                  <ul>
+                <details class="project-detail">
+                  <summary class="detail-title">작업과정 보기</summary>
+                  <ul class="detail-list">
                     <li>
                       <h4>구현 과정</h4>
                       <p>
@@ -77,23 +109,33 @@
                 </details>
               </div>
             </li>
-            <li>
-              <img src="" alt="" />
-              <div>
-                <p>02 / 팀 프로젝트</p>
+            <li class="project-item">
+              <img class="project-img" src="" alt="" />
+              <div class="project-info">
+                <p class="project-category">02 / 팀 프로젝트</p>
 
-                <h3>포캣멍보호소</h3>
-                <p>
+                <h3 class="project-title">포캣멍보호소</h3>
+                <p class="project-desc">
                   방문자가 보호 동물 정보를 확인하고 입양과 후원을 문의할 수 있도록 제작한 팀
                   프로젝트입니다.
                 </p>
 
-                <p>프론트엔드 개발 · 공통 스타일 구성 · 반응형 UI 구현 · API 연동</p>
+                <p class="project-role">
+                  프론트엔드 개발 · 공통 스타일 구성 · 반응형 UI 구현 · API 연동
+                </p>
+                <ul class="skill-list" aria-label="사용 기술">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Cafe24</li>
+                </ul>
 
-                <button type="button">사이트보기</button>
-                <details>
-                  <summary>작업과정 보기</summary>
-                  <ul>
+                <div class="btn-wrap">
+                  <button class="btn" type="button">사이트보기</button>
+                </div>
+                <details class="project-detail">
+                  <summary class="detail-title">작업과정 보기</summary>
+                  <ul class="detail-list">
                     <li>
                       <h4>구현 과정</h4>
                       <p>
@@ -125,21 +167,24 @@
         </div>
       </section>
 
-      <section id="drawing">
-        <h2>취미로 그림을 그려요</h2>
+      <section id="drawing" class="section-drawing inner">
+        <h2 class="section-title">취미로 그림을 그려요</h2>
         <a href="인스타 그램"></a>
         <a href="미리캔버스 기여자페이지"></a>
         <a href="어도비 스톡"></a>
-        <div>
-          <ul></ul>
+        <div class="drawing-wrap">
+          <ul class="drawing-list"></ul>
         </div>
       </section>
 
-      <section id="email">
-        <h2>메일 보내기</h2>
+      <section id="email" class="section-contact inner">
+        <h2 class="section-title">메일 보내기</h2>
       </section>
     </main>
 
-    <footer>오늘도 펭긋</footer>
+    <footer class="footer">
+      <div class="inner">오늘도 펭긋</div>
+    </footer>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
