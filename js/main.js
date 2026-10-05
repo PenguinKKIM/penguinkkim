@@ -28,6 +28,31 @@ if (canvas) {
   controls.target.set(0, -0.05, 0);
   controls.update();
 
+  // 캔버스에 키보드 포커스가 있을 때만 방향키로 회전합니다.
+  canvas.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+    event.preventDefault();
+
+    const offset = camera.position.clone().sub(controls.target);
+    const spherical = new THREE.Spherical().setFromVector3(offset);
+    const step = Math.PI / 18;
+
+    if (event.key === "ArrowLeft") spherical.theta -= step;
+    if (event.key === "ArrowRight") spherical.theta += step;
+    if (event.key === "ArrowUp") spherical.phi -= step;
+    if (event.key === "ArrowDown") spherical.phi += step;
+    spherical.phi = THREE.MathUtils.clamp(
+      spherical.phi,
+      controls.minPolarAngle,
+      controls.maxPolarAngle,
+    );
+
+    camera.position.copy(controls.target).add(offset.setFromSpherical(spherical));
+    controls.update();
+  });
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   scene.add(new THREE.HemisphereLight(0xffffff, 0xb8c4d9, 2.2));
 
   const keyLight = new THREE.DirectionalLight(0xffffff, 3.2);
@@ -50,6 +75,7 @@ if (canvas) {
     "./asset/model/penguin.glb",
     (gltf) => {
       scene.remove(penguin);
+      disposeModel(penguin);
 
       penguin = gltf.scene;
       fitModelToScene(penguin);
@@ -61,17 +87,20 @@ if (canvas) {
         metalness: 0,
       });
 
+      const oldMaterials = new Set();
       penguin.traverse((child) => {
         if (child.isMesh) {
+          const materials = Array.isArray(child.material) ? child.material : [child.material];
+          materials.forEach((material) => oldMaterials.add(material));
           child.material = solidMaterial;
-          child.castShadow = true;
-          child.receiveShadow = true;
         }
       });
+      // 단색 재질로 교체한 뒤 사용하지 않는 텍스처와 재질을 해제합니다.
+      disposeMaterials(oldMaterials);
 
       if (gltf.animations.length > 0) {
         mixer = new THREE.AnimationMixer(penguin);
-        gltf.animations.forEach((clip) => mixer.clipAction(clip).play());
+        mixer.clipAction(gltf.animations[0]).play();
       }
 
       scene.add(penguin);
@@ -104,6 +133,11 @@ if (canvas) {
     if (!width || !height) return;
 
     camera.aspect = width / height;
+    // 세로로 긴 캔버스에서도 펭귄의 양옆이 잘리지 않도록 시야를 넓힙니다.
+    const baseFov = THREE.MathUtils.degToRad(35);
+    camera.fov = THREE.MathUtils.radToDeg(
+      2 * Math.atan(Math.tan(baseFov / 2) / Math.min(1, camera.aspect)),
+    );
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
   }
@@ -113,12 +147,13 @@ if (canvas) {
   resize();
 
   function animate() {
-    const delta = clock.getDelta();
+    const delta = Math.min(clock.getDelta(), 0.05);
     const elapsed = clock.elapsedTime;
-    penguin.position.y = penguinBaseY + Math.sin(elapsed * 1.5) * 0.035;
-    ground.position.y = -1.48 + Math.sin(elapsed * 1.5) * 0.01;
+    const bob = reducedMotion.matches ? 0 : Math.sin(elapsed * 1.5);
+    penguin.position.y = penguinBaseY + bob * 0.035;
+    ground.position.y = -1.48 + bob * 0.01;
 
-    if (mixer) mixer.update(delta);
+    if (mixer && !reducedMotion.matches) mixer.update(delta);
     controls.update();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
@@ -135,12 +170,36 @@ function fitModelToScene(model) {
   if (!maxDimension) return;
 
   const targetSize = 2.8;
-  model.scale.setScalar(targetSize / maxDimension);
+  model.scale.multiplyScalar(targetSize / maxDimension);
 
   // 스케일을 적용한 뒤 다시 중심을 계산해야 회전할 때 화면 밖으로 밀리지 않습니다.
   const scaledBox = new THREE.Box3().setFromObject(model);
   const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
-  model.position.set(-scaledCenter.x, -scaledCenter.y, -scaledCenter.z);
+  model.position.sub(scaledCenter);
+}
+
+function disposeMaterials(materials) {
+  const textures = new Set();
+  materials.forEach((material) => {
+    Object.values(material).forEach((value) => {
+      if (value?.isTexture) textures.add(value);
+    });
+    material.dispose();
+  });
+  textures.forEach((texture) => texture.dispose());
+}
+
+function disposeModel(model) {
+  const geometries = new Set();
+  const materials = new Set();
+  model.traverse((child) => {
+    if (!child.isMesh) return;
+    geometries.add(child.geometry);
+    const meshMaterials = Array.isArray(child.material) ? child.material : [child.material];
+    meshMaterials.forEach((material) => materials.add(material));
+  });
+  geometries.forEach((geometry) => geometry.dispose());
+  disposeMaterials(materials);
 }
 
 function createPenguin() {

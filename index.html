@@ -11,13 +11,15 @@
         }
       }
     </script>
+    <script type="module" src="js/main.js"></script>
+
     <title>PenguinKKim</title>
   </head>
   <body>
     <header class="header">
       <div class="inner">
         <img class="logo" src="asset/imgs/today-pen-mute.svg" alt="오늘도,펭긋 로고" />
-        <nav class="gnb">
+        <nav class="gnb" aria-label="주요 메뉴">
           <ul class="list">
             <li><a href="#coding">코딩</a></li>
             <li><a href="#drawing">그림</a></li>
@@ -29,14 +31,21 @@
     <main>
       <section class="section-intro inner">
         <h1 class="intro-title">안녕하세요! 저는 김펭긴 입니다!</h1>
-        <!-- 3D가 들어갈 자리 : 펭귄이 막 돌아감 -->
+        <!-- GLB 모델을 불러와 드래그로 돌려보는 영역 -->
         <canvas
           class="intro-canvas"
           aria-label="마우스나 손가락으로 돌려볼 수 있는 3D 펭귄"
+          aria-describedby="intro-help"
           tabindex="0"
         >
-          3D 펭귄을 불러오지 못했습니다.
+          둥근 펭귄 캐릭터의 3D 모델입니다.
         </canvas>
+        <p class="intro-help" id="intro-help">클릭해서 드래그하거나 방향키로 펭귄을 돌려보세요.</p>
+        <p class="intro-desc">
+          <span>그림을 그리고, 코드로 화면을 만들어요.</span>
+          <span>제가 좋아하는 것들과 직접 만든 작업들을 이곳에 담았어요.</span>
+          <span>천천히 둘러봐 주세요.</span>
+        </p>
       </section>
 
       <section id="coding" class="coding section-project inner">
@@ -46,20 +55,19 @@
             <h2 class="section-title">&#60;coding /&#62;</h2>
             <p class="section-desc">웹 퍼블리셔, 프론트엔드를 지향해요</p>
             <p class="section-info">
-              10년간 반려동물 미용사로 일하며 상대의 요구를 듣고 세심하게 반영하는 태도를
-              배웠어요.<br />
-              지금은 HTML, CSS, JavaScript와 React로 화면을 만들며, <br />보호소 홈페이지 제작과
-              인턴십을 통해 반응형 웹과 협업을 경험했어요. <br />디자인의 의도를 살리고, 누구나
-              편리하게 사용할 수 있는 화면을 만들고 싶어요.
+              10년간 반려동물 미용사로 일하며 상대의 요구를 듣고 세심하게 반영하는 태도를 배웠어요.
+              지금은 HTML, CSS, JavaScript와 React로 화면을 만들며, 보호소 홈페이지 제작과 인턴십을
+              통해 반응형 웹과 협업을 경험했어요. 디자인의 의도를 살리고, 누구나 편리하게 사용할 수
+              있는 화면을 만들고 싶어요.
             </p>
-            <a href="내 깃허브"></a>
+            <!-- GitHub 주소가 정해지면 링크를 추가합니다. -->
           </div>
         </div>
 
         <div class="project-wrap">
           <ul class="project-list">
             <li class="project-item">
-              <img class="project-img" src="" alt="" />
+              <!-- 프로젝트 화면을 준비하면 project-img 클래스로 이미지를 추가합니다. -->
               <div class="project-info">
                 <p class="project-category">01 / 개인 프로젝트</p>
                 <h3 class="project-title">오늘도,펭긋</h3>
@@ -74,8 +82,9 @@
                 </ul>
 
                 <div class="btn-wrap">
-                  <button class="btn" type="button">사이트보기</button>
-                  <button class="btn" type="button">Github</button>
+                  <!-- 주소가 정해지면 disabled 버튼을 a href 링크로 바꿉니다. -->
+                  <button class="btn" type="button" disabled>사이트 보기 (준비 중)</button>
+                  <button class="btn" type="button" disabled>GitHub (준비 중)</button>
                 </div>
 
                 <details class="project-detail">
@@ -110,7 +119,7 @@
               </div>
             </li>
             <li class="project-item">
-              <img class="project-img" src="" alt="" />
+              <!-- 프로젝트 화면을 준비하면 project-img 클래스로 이미지를 추가합니다. -->
               <div class="project-info">
                 <p class="project-category">02 / 팀 프로젝트</p>
 
@@ -124,14 +133,13 @@
                   프론트엔드 개발 · 공통 스타일 구성 · 반응형 UI 구현 · API 연동
                 </p>
                 <ul class="skill-list" aria-label="사용 기술">
-                  <li>HTML</li>
+                  <li>React</li>
                   <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>Cafe24</li>
+                  <li>Axios</li>
                 </ul>
 
                 <div class="btn-wrap">
-                  <button class="btn" type="button">사이트보기</button>
+                  <button class="btn" type="button" disabled>사이트 보기 (준비 중)</button>
                 </div>
                 <details class="project-detail">
                   <summary class="detail-title">작업과정 보기</summary>
@@ -148,7 +156,7 @@
                       <h4>어려웠던 점</h4>
                       <p>
                         각 페이지에서 Header와 Footer를 개별적으로 불러와 코드가 반복됐습니다. 새
-                        페이지를 추가할 때마다 공통 영역을 다시 구성해야 해서 관리가 번거로웠습니
+                        페이지를 추가할 때마다 공통 영역을 다시 구성해야 해서 관리가 번거로웠습니다.
                       </p>
                     </li>
                     <li>
@@ -169,9 +177,7 @@
 
       <section id="drawing" class="section-drawing inner">
         <h2 class="section-title">취미로 그림을 그려요</h2>
-        <a href="인스타 그램"></a>
-        <a href="미리캔버스 기여자페이지"></a>
-        <a href="어도비 스톡"></a>
+        <!-- Instagram, 미리캔버스, Adobe Stock 주소가 정해지면 링크를 추가합니다. -->
         <div class="drawing-wrap">
           <ul class="drawing-list"></ul>
         </div>
@@ -185,6 +191,5 @@
     <footer class="footer">
       <div class="inner">오늘도 펭긋</div>
     </footer>
-    <script type="module" src="js/main.js"></script>
   </body>
 </html>
