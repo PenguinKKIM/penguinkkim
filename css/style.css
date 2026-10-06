@@ -5,6 +5,12 @@
     url("../asset/icon/cursor.png") 2 2,
     auto;
 }
+a:hover,
+button:hover {
+  cursor:
+    url("../asset/icon/pointer.png") 2 2,
+    auto;
+}
 html {
   scroll-padding-top: calc(var(--header-height) + var(--space-4));
 }
@@ -357,7 +363,9 @@ body {
 }
 
 .drawing-thumb:hover {
-  cursor: pointer;
+  cursor:
+    url("../asset/icon/pointer.png") 2 2,
+    auto;
 }
 
 .drawing-title {
