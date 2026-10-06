@@ -23,6 +23,12 @@ body {
   /* 구역 소개 문구 */
 }
 
+.coding .img-wrap .img,
+.drawing .img-wrap .img {
+  width: 400px;
+  flex-shrink: 0;
+}
+
 /* 2. 상단: 로고와 메뉴 배치 */
 .header {
   background-color: var(--color-primary);
@@ -208,9 +214,34 @@ body {
 }
 
 /* 8. 그림 / 연락처 / 하단 */
-.section-drawing {
+.drawing {
   padding-inline: var(--container-padding);
+  background-color: var(--color-primary-light);
 }
+
+.drawing .img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-20);
+  padding: var(--space-10);
+}
+
+.drawing .section-title {
+  display: inline-block;
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary-light);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .drawing .section-title {
+    background-image: var(--gradient-title);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
 .drawing-wrap {
 }
 .drawing-list {
