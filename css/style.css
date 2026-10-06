@@ -1,7 +1,13 @@
 @import url(reset.css);
 @import url(vars.css);
-
-/* 1. 공통: vars.css의 값을 var(...)로 가져와 사용하세요. */
+* {
+  cursor:
+    url("../asset/icon/cursor.png") 2 2,
+    auto;
+}
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+}
 body {
   background-color: var(--color-background);
   font-size: var(--font-size-base);
@@ -12,6 +18,12 @@ body {
 .inner .section-title {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
 }
 
 .coding .img-wrap .img,
@@ -171,61 +183,120 @@ body {
 }
 
 .project-wrap {
-  padding-inline: var(--container-padding);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding: var(--space-20) var(--container-padding);
 }
 .project-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
 }
 
-.project-item {
-  /* 이미지와 설명의 배치, 프로젝트 사이 간격 */
+.project-item-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.project-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 32rem;
+  padding: var(--space-4);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.project-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+.project-screen-main {
+  grid-row: span 2;
 }
 
 .project-img {
-}
-.project-info {
-}
-.project-category {
-}
-.project-title {
-}
-.project-desc {
-}
-.project-role {
+  max-width: 100%;
+  height: auto;
 }
 
-/* 5. 기술 배지: 목록 안의 목록이므로 클래스로 구분합니다. */
+.project-caption {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-align: center;
+  word-break: keep-all;
+}
+
+.project-info {
+  min-width: 0;
+}
+.project-category {
+  font-weight: var(--font-weight-medium);
+}
+.project-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+.project-desc {
+  margin: var(--space-4) 0;
+}
+.project-role {
+  margin-bottom: var(--space-4);
+}
+
 .skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
 }
 .skill-list > li {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 50px;
+}
+
+.skill-list > li:nth-child(1) {
+  background-color: rgb(255, 177, 149);
+}
+
+.skill-list > li:nth-child(2) {
+  background-color: rgb(147, 185, 255);
+}
+.skill-list > li:nth-child(3) {
+  background-color: rgb(253, 255, 182);
+}
+.skill-list > li:nth-child(4) {
+  background-color: rgb(150, 145, 255);
 }
 
 /* 6. 버튼 모양과 배치: 추후 a 태그에도 같은 클래스를 사용합니다. */
 .btn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
 }
 .btn {
+  background-color: var(--color-primary);
+  padding: var(--space-4);
+  color: aliceblue;
+  border-radius: 10px;
 }
 .btn:hover {
-}
-
-.btn:disabled {
-  opacity: 0.6;
-}
-
-/* 7. 작업 과정: summary의 기본 펼치기 표시를 활용하세요. */
-.project-detail {
-}
-.detail-title {
-  cursor: pointer;
-}
-.project-detail[open] {
-}
-.detail-list {
-}
-.detail-list > li {
-}
-.detail-list h4 {
-}
-.detail-list p {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary);
 }
 
 /* 8. 그림 / 연락처 / 하단 */
@@ -283,6 +354,10 @@ body {
   width: min(100%, 18rem);
   aspect-ratio: 1;
   object-fit: contain;
+}
+
+.drawing-thumb:hover {
+  cursor: pointer;
 }
 
 .drawing-title {
@@ -347,6 +422,22 @@ body {
   width: min(100%, 18rem);
   aspect-ratio: 1;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.drawing-img:hover {
+  transform: scale(1.1);
+  cursor: zoom-in;
+}
+
+.email .img-wrap {
+  background: #002262;
+  background: linear-gradient(
+    217deg,
+    rgba(0, 34, 98, 1) 0%,
+    rgba(123, 165, 244, 1) 0%,
+    rgba(234, 241, 248, 1) 70%
+  );
 }
 
 .footer {
@@ -360,6 +451,15 @@ body {
 
 /* 9. 좁은 화면에서는 코딩 이미지와 소개를 세로로 배치합니다. */
 @media (max-width: 56rem) {
+  .project-item-visual {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .project-preview {
+    justify-self: center;
+  }
+
   .coding .img-wrap,
   .drawing .img-wrap,
   .email .img-wrap {
@@ -376,6 +476,14 @@ body {
 }
 
 @media (max-width: 40rem) {
+  .project-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-screen-main {
+    grid-row: auto;
+  }
+
   .drawing-gallery {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);
@@ -386,5 +494,11 @@ body {
   .drawing-item:nth-child(3) .drawing-content {
     width: 100%;
     margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
