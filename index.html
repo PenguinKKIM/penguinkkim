@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="asset/icon/pen.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <script type="importmap">
       {
@@ -12,6 +13,7 @@
       }
     </script>
     <script type="module" src="js/main.js"></script>
+    <script src="js/drawing.js" defer></script>
 
     <title>PenguinKKim</title>
   </head>
@@ -48,7 +50,7 @@
         </p>
       </section>
 
-      <section id="coding" class="coding section-project inner">
+      <section id="coding" class="coding inner">
         <div class="img-wrap">
           <img src="asset/imgs/coding.png" alt="코딩하는 펭긴" class="img" />
           <div>
@@ -182,26 +184,130 @@
             <!-- Instagram, 미리캔버스, Adobe Stock 주소가 정해지면 링크를 추가합니다. -->
             <p class="section-desc">좋아하는 그림이 누군가에게 필요한 디자인이 되도록.</p>
             <p class="section-info">
-              취미로 시작한 그림을 미리캔버스와 Adobe Stock에 올리며, 사람들이 어떤 이미지를 찾고
-              어디에 활용하는지 살펴보게 됐어요. <br />시장과 트렌드를 조사하면서 만드는 사람의
-              취향뿐 아니라 사용하는 사람의 목적도 생각하게 됐고, 보기 좋으면서 활용하기 편한 그림을
-              고민하고 있어요.
+              취미로 시작한 그림을 미리캔버스와 Adobe Stock에 올리며,<br />
+              사람들이 어떤 이미지를 찾고 어디에 활용하는지 살펴보게 됐어요. <br />시장과 트렌드를
+              조사하면서 만드는 사람의 취향뿐 아니라 사용하는 사람의 목적도 생각하게 됐고,<br />
+              보기 좋으면서 활용하기 편한 그림을 고민하고 있어요.
             </p>
           </div>
           <img src="asset/imgs/draw.png" alt="누워있는 펭긴" class="img" />
         </div>
-        <div class="drawing-wrap">
-          <ul class="drawing-list"></ul>
+        <div class="drawing-gallery">
+          <details class="drawing-item" name="drawing-series">
+            <summary class="drawing-summary">
+              <img src="asset/imgs/draw/W.png" alt="캐릭터" class="drawing-thumb" />
+              <span class="drawing-title">캐릭터</span>
+              <span class="drawing-toggle">
+                <span class="drawing-more">더 보기</span>
+                <span class="drawing-less">접기</span>
+              </span>
+            </summary>
+
+            <div class="drawing-content">
+              <ul class="drawing-list">
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/Shihtzu.png" class="drawing-img" alt="시츄" />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/Corgi.png" class="drawing-img" alt="코기" />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/Husky.png" class="drawing-img" alt="허스키" />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/ghost.png" class="drawing-img" alt="유령" />
+                </li>
+              </ul>
+            </div>
+          </details>
+          <details class="drawing-item" name="drawing-series">
+            <summary class="drawing-summary">
+              <img src="asset/imgs/draw/jeon_.png" alt="전" class="drawing-thumb" />
+              <span class="drawing-title">시즌 요소</span>
+              <span class="drawing-toggle">
+                <span class="drawing-more">더 보기</span>
+                <span class="drawing-less">접기</span>
+              </span>
+            </summary>
+
+            <div class="drawing-content">
+              <ul class="drawing-list">
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/songpyeon.png" class="drawing-img" alt="송편" />
+                </li>
+                <li class="drawing-list-item">
+                  <img
+                    src="asset/imgs/draw/02turkey.png"
+                    class="drawing-img"
+                    alt="그림 그리는 펭귄"
+                  />
+                </li>
+                <li class="drawing-list-item">
+                  <img
+                    src="asset/imgs/draw/01pumpkin-pie.png"
+                    class="drawing-img"
+                    alt="잠자는 펭귄"
+                  />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/A.png" class="drawing-img" alt="할로윈호박" />
+                </li>
+              </ul>
+            </div>
+          </details>
+          <details class="drawing-item" name="drawing-series">
+            <summary class="drawing-summary">
+              <img src="asset/imgs/draw/hydrangea_blue_up.png" alt="수국" class="drawing-thumb" />
+              <span class="drawing-title">자연물</span>
+              <span class="drawing-toggle">
+                <span class="drawing-more">더 보기</span>
+                <span class="drawing-less">접기</span>
+              </span>
+            </summary>
+
+            <div class="drawing-content">
+              <ul class="drawing-list">
+                <li class="drawing-list-item">
+                  <img
+                    src="asset/imgs/draw/chinese_trumpet_vine.png"
+                    class="drawing-img"
+                    alt="능소화"
+                  />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/sunflower_.png" class="drawing-img" alt="해바라기" />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/Cosmos.png" class="drawing-img" alt="코스모스" />
+                </li>
+                <li class="drawing-list-item">
+                  <img src="asset/imgs/draw/mugunghwa.png" class="drawing-img" alt="무궁화" />
+                </li>
+              </ul>
+            </div>
+          </details>
         </div>
       </section>
 
-      <section id="email" class="section-contact inner">
-        <h2 class="section-title">메일 보내기</h2>
+      <section id="email" class="email inner">
+        <div class="img-wrap">
+          <img src="asset/imgs/email.png" alt="이메일" class="img" />
+          <div>
+            <h2 class="section-title">함께할 이야기를 기다려요</h2>
+            <p class="section-desc">보기 좋고 쓰기 편한 화면을 함께 만들고 싶어요.</p>
+            <p class="section-info">
+              채용 제안이나 포트폴리오에 대해 궁금한 점이 있다면 편하게 연락해 주세요.<br />
+              보내주신 이야기를 꼼꼼히 읽고 답장드릴게요.
+            </p>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      <div class="inner">오늘도 펭긋</div>
+      <div class="inner">
+        <img src="asset/imgs/today-pen-mute.svg" alt="펭긋로고" class="img" />
+      </div>
     </footer>
   </body>
 </html>
