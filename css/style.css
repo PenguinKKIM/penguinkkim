@@ -130,6 +130,7 @@ body {
 
 .intro-canvas-wrap {
   position: relative;
+  overflow-x: hidden;
 }
 
 .intro-canvas-wrap .circle {
