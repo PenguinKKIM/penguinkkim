@@ -133,7 +133,6 @@ if (canvas) {
     if (!width || !height) return;
 
     camera.aspect = width / height;
-    // 세로로 긴 캔버스에서도 펭귄의 양옆이 잘리지 않도록 시야를 넓힙니다.
     const baseFov = THREE.MathUtils.degToRad(35);
     camera.fov = THREE.MathUtils.radToDeg(
       2 * Math.atan(Math.tan(baseFov / 2) / Math.min(1, camera.aspect)),
@@ -269,3 +268,12 @@ function createPenguin() {
 
   return penguin;
 }
+
+const navLinks = document.querySelectorAll(".gnb a");
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.forEach((item) => item.classList.remove("active"));
+    link.classList.add("active");
+  });
+});
